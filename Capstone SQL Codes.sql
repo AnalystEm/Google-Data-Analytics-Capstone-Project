@@ -52,6 +52,7 @@ start_station_name nvarchar(250),
 end_station_name nvarchar(250),
 member_casual varchar(50)
 )
+
 insert into Capstone2
 select *
 from CapstoneDB..[202101-divvy-tripdata]
@@ -92,7 +93,7 @@ from CapstoneDB..[202112-divvy-tripdata]
 -- (1) Difference in Type of bikes used by Casual Riders and Annual Members
 
 select rideable_type, member_casual, count(rideable_type) as NoOfUsers_PerBike
-from [dbo].[Capstone2]
+from MangoDB..Capstone2
 group by member_casual, rideable_type
 order by member_casual
 
@@ -135,5 +136,3 @@ dateadd(minute, @tt, 0)), 114);
 select member_casual, count(member_casual) as No_Of_Riders
 from MangoDB..Capstone2
 group by member_casual
-
-
